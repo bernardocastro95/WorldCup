@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "939243386145",
+    "firebase_url": "https://world-cup-30743-default-rtdb.firebaseio.com",
+    "project_id": "world-cup-30743",
+    "storage_bucket": "world-cup-30743.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939243386145:android:1329b73712ce1bfee6fa60",
+        "android_client_info": {
+          "package_name": "com.example.worldcup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdcZZmJ05xbm30Ja7nRMsT9al-IbJhe-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
