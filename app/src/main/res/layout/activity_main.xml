@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Insert here"
-        android:inputType="text" />
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"

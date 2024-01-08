@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,12 +36,17 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 et.getText();
+                emptyInput();
+                checkInput();
             }
         });
     }
 
     private void getInfo(){
+
+
         db.collection("worldcup")
                 .whereEqualTo("year", wc.getYear())
                 .get()
@@ -55,5 +61,25 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void checkInput(){
+         int inputValue = Integer.parseInt(et.getText().toString());
+         if(inputValue % 4 != 0){
+             Toast.makeText(this, "The World's Cup year must be divisible by 4", Toast.LENGTH_SHORT).show();
+         }
+         if(inputValue < 1930){
+             Toast.makeText(this, "There were no World Cups before 1930", Toast.LENGTH_SHORT).show();
+         }
+         if(inputValue % 4 == 0 && inputValue >= 2026){
+             Toast.makeText(this, "Upcoming World Cups won't be displayed yet", Toast.LENGTH_SHORT).show();
+
+         }
+    }
+
+    private void emptyInput(){
+        if(TextUtils.isEmpty(et.getText().toString())){
+            Toast.makeText(this, "You must insert an input", Toast.LENGTH_SHORT).show();
+        }
     }
 }
