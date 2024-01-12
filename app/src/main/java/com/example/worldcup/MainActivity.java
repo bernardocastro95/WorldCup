@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -58,16 +59,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getInfo(){
-        DocumentReference dr = db.collection("worldcup").document("worldcup");
-        dr.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                tv.setText("The World Cup of " + value.getString("year") + " was hosted at "
-                + value.getString("host") + ". It was won by " + value.getString("champion")
-                + " and the runner up was " + value.getString("runnerup") + ". The striker was " +
-                        value.getString("striker"));
-            }
-        });
+
+        if(!et.getText().toString().isEmpty()){
+            DocumentReference dr = db.collection("allWorldCups").document(et.getText().toString());
+            dr.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    String cupId = documentSnapshot.getId();
+                    String cupYear = documentSnapshot.getString("year");
+                    String cupHost = documentSnapshot.getString("host");
+                    String cupChampion = documentSnapshot.getString("champion");
+                    String cupRunnerUp = documentSnapshot.getString("runnerup");
+                    String cupStriker = documentSnapshot.getString("striker");
+
+                    tv.setText("The World Cup of " + cupYear + " was hosted at "
+                            + cupHost + ". It was won by " + cupChampion
+                            + " and the runner up was " + cupRunnerUp + ". The striker was " +
+                            cupStriker);
+                }
+            });
+        }
+
+
     }
 
     private void checkInput(){
