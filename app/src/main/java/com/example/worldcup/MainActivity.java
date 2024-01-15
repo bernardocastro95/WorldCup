@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,16 +30,19 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     Button button;
     EditText et;
-    TextView tv;
+    TextView year, host, champion, runnerup, striker;
     WorldCup wc;
-    String cup_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.submitButton);
         et = findViewById(R.id.yearEditText);
-        tv = findViewById(R.id.worldCupText);
+        year = findViewById(R.id.year);
+        host = findViewById(R.id.host);
+        champion = findViewById(R.id.champion);
+        runnerup = findViewById(R.id.runnerup);
+        striker = findViewById(R.id.striker);
         db = FirebaseFirestore.getInstance();
         wc = new WorldCup();
 
@@ -65,17 +69,17 @@ public class MainActivity extends AppCompatActivity {
             dr.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    String cupId = documentSnapshot.getId();
                     String cupYear = documentSnapshot.getString("year");
                     String cupHost = documentSnapshot.getString("host");
                     String cupChampion = documentSnapshot.getString("champion");
                     String cupRunnerUp = documentSnapshot.getString("runnerup");
                     String cupStriker = documentSnapshot.getString("striker");
 
-                    tv.setText("The World Cup of " + cupYear + " was hosted at "
-                            + cupHost + ". It was won by " + cupChampion
-                            + " and the runner up was " + cupRunnerUp + ". The striker was " +
-                            cupStriker);
+                    year.setText(year.getText() + " of " + cupYear);
+                    host.setText(cupHost);
+                    champion.setText(cupChampion);
+                    runnerup.setText(cupRunnerUp);
+                    striker.setText(cupStriker);
                 }
             });
         }
