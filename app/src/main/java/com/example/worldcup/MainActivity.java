@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     EditText et;
     TextView year, host, champion, runnerup, striker;
-    WorldCup wc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         runnerup = findViewById(R.id.runnerup);
         striker = findViewById(R.id.striker);
         db = FirebaseFirestore.getInstance();
-        wc = new WorldCup();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,22 +62,36 @@ public class MainActivity extends AppCompatActivity {
 
     private void getInfo(){
 
+
         if(!et.getText().toString().isEmpty()){
             DocumentReference dr = db.collection("allWorldCups").document(et.getText().toString());
             dr.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    String cupYear = documentSnapshot.getString("year");
-                    String cupHost = documentSnapshot.getString("host");
-                    String cupChampion = documentSnapshot.getString("champion");
-                    String cupRunnerUp = documentSnapshot.getString("runnerup");
-                    String cupStriker = documentSnapshot.getString("striker");
+                    if(!year.getText().toString().isEmpty()
+                    && !host.getText().toString().isEmpty()
+                    && !champion.getText().toString().isEmpty()
+                    && !runnerup.getText().toString().isEmpty()
+                    && !striker.getText().toString().isEmpty()){
+                        year.setText("The World Cup of ");
+                        host.setText("");
+                        champion.setText("");
+                        runnerup.setText("");
+                        striker.setText("");
+                    }
+                    else {
+                        String cupYear = documentSnapshot.getString("year");
+                        String cupHost = documentSnapshot.getString("host");
+                        String cupChampion = documentSnapshot.getString("champion");
+                        String cupRunnerUp = documentSnapshot.getString("runnerup");
+                        String cupStriker = documentSnapshot.getString("striker");
 
-                    year.setText(year.getText() + " of " + cupYear);
-                    host.setText(cupHost);
-                    champion.setText(cupChampion);
-                    runnerup.setText(cupRunnerUp);
-                    striker.setText(cupStriker);
+                        year.setText(year.getText() + " of " + cupYear);
+                        host.setText(cupHost);
+                        champion.setText(cupChampion);
+                        runnerup.setText(cupRunnerUp);
+                        striker.setText(cupStriker);
+                    }
                 }
             });
         }
