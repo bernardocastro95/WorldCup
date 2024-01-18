@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 et.getText();
                 checkInput();
                 inBetween();
-                //emptyInput();
                 checkOlympicYear();
                 checkWW2Year();
                 getInfo();
@@ -78,6 +77,17 @@ public class MainActivity extends AppCompatActivity {
                         champion.setText("");
                         runnerup.setText("");
                         striker.setText("");
+                        String cupYear = documentSnapshot.getString("year");
+                        String cupHost = documentSnapshot.getString("host");
+                        String cupChampion = documentSnapshot.getString("champion");
+                        String cupRunnerUp = documentSnapshot.getString("runnerup");
+                        String cupStriker = documentSnapshot.getString("striker");
+
+                        year.setText(year.getText() + " of " + cupYear);
+                        host.setText(cupHost);
+                        champion.setText(cupChampion);
+                        runnerup.setText(cupRunnerUp);
+                        striker.setText(cupStriker);
                     }
                     else {
                         String cupYear = documentSnapshot.getString("year");
@@ -111,13 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-    /*private void emptyInput(){
-        String userInput = et.getText().toString();
-        if(userInput.matches("")){
-            Toast.makeText(this, "You must insert an input", Toast.LENGTH_SHORT).show();
-        }
-    }*/
     private void checkOlympicYear(){
         int inputValue = Integer.parseInt(et.getText().toString());
         if(inputValue == 1932 || inputValue == 1936
