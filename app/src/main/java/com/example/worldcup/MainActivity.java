@@ -82,8 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         String cupChampion = documentSnapshot.getString("champion");
                         String cupRunnerUp = documentSnapshot.getString("runnerup");
                         String cupStriker = documentSnapshot.getString("striker");
-
-                        year.setText(year.getText() + " of " + cupYear);
+                        year.setText(year.getText() + cupYear);
                         host.setText(cupHost);
                         champion.setText(cupChampion);
                         runnerup.setText(cupRunnerUp);
@@ -96,11 +95,11 @@ public class MainActivity extends AppCompatActivity {
                         String cupRunnerUp = documentSnapshot.getString("runnerup");
                         String cupStriker = documentSnapshot.getString("striker");
 
-                        year.setText(year.getText() + " of " + cupYear);
-                        host.setText(cupHost);
-                        champion.setText(cupChampion);
-                        runnerup.setText(cupRunnerUp);
-                        striker.setText(cupStriker);
+                        year.setText(year.getText() + cupYear);
+                        host.setText("Host: " + cupHost);
+                        champion.setText("Champion: " + cupChampion);
+                        runnerup.setText("Runner-up: " + cupRunnerUp);
+                        striker.setText("Striker: " + cupStriker);
                     }
                 }
             });
@@ -110,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkInput(){
-         int inputValue = Integer.parseInt(et.getText().toString());
 
+         int inputValue = Integer.parseInt(et.getText().toString());
          if(inputValue < 1930){
              Toast.makeText(this, "There were no World Cups before 1930", Toast.LENGTH_SHORT).show();
          }

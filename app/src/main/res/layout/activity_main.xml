@@ -14,7 +14,7 @@
         android:id="@+id/yearEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="5"
+        android:ems="3"
         android:hint="Insert here"
         android:inputType="number" />
 
@@ -31,8 +31,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:textSize="30sp"
-        android:text="THE WORLD CUP"
+        android:textSize="25sp"
+        android:layout_marginStart="80dp"
+        android:text="THE WORLD CUP OF "
         />
     <TextView
         android:id="@+id/host"
