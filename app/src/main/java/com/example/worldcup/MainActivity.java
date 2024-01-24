@@ -30,7 +30,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
-    Button button, clear, back;
+    Button button;
     EditText et;
     TextView year, host, champion, runnerup, striker;
     @Override
@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.submitButton);
-        clear = findViewById(R.id.clearButton);
-        back = findViewById(R.id.returnButton);
         et = findViewById(R.id.yearEditText);
         year = findViewById(R.id.year);
         host = findViewById(R.id.host);
@@ -61,25 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                button.setVisibility(View.VISIBLE);
-                clear.setVisibility(View.INVISIBLE);
-                back.setVisibility(View.INVISIBLE);
-            }
-        });
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                year.setText("THE WORLD CUP OF ");
-                host.setText("");
-                champion.setText("");
-                runnerup.setText("");
-                striker.setText("");
-            }
-        });
     }
 
     private void getInfo(){
@@ -95,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     && !champion.getText().toString().isEmpty()
                     && !runnerup.getText().toString().isEmpty()
                     && !striker.getText().toString().isEmpty()){
-                        year.setText("THE WORLD CUP OF ");
+                        year.setText("The World Cup of ");
                         host.setText("");
                         champion.setText("");
                         runnerup.setText("");
@@ -106,16 +85,10 @@ public class MainActivity extends AppCompatActivity {
                         String cupRunnerUp = documentSnapshot.getString("runnerup");
                         String cupStriker = documentSnapshot.getString("striker");
                         year.setText(year.getText() + cupYear);
-                        host.setText("Host: " + cupHost);
-                        champion.setText("Champion: " + cupChampion);
-                        runnerup.setText("Runner-up: " + cupRunnerUp);
-                        striker.setText("Striker: " + cupStriker);
-                        et.getText().clear();
-                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
-                        button.setVisibility(View.INVISIBLE);
-                        clear.setVisibility(View.VISIBLE);
-                        back.setVisibility(View.VISIBLE);
+                        host.setText(cupHost);
+                        champion.setText(cupChampion);
+                        runnerup.setText(cupRunnerUp);
+                        striker.setText(cupStriker);
                     }
                     else {
                         String cupYear = documentSnapshot.getString("year");
@@ -132,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
                         et.getText().clear();
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
-                        button.setVisibility(View.INVISIBLE);
-                        clear.setVisibility(View.VISIBLE);
-                        back.setVisibility(View.VISIBLE);
                     }
                 }
             });
