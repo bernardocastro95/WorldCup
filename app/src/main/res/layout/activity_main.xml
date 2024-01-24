@@ -24,7 +24,24 @@
         android:text="Submit"
         android:id="@+id/submitButton"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:id="@+id/clearButton"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="-49dp"
+        android:visibility="invisible"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:id="@+id/returnButton"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="-49dp"
+        android:visibility="invisible"/>
     <TextView
         android:id="@+id/year"
         android:layout_marginTop="-300dp"
