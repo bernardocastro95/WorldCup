@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 button.setVisibility(View.VISIBLE);
+                et.setVisibility(View.VISIBLE);
                 back.setVisibility(View.INVISIBLE);
                 clear.setVisibility(View.INVISIBLE);
             }
@@ -111,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         runnerup.setText("Runner-up: " + cupRunnerUp);
                         striker.setText("Striker: " + cupStriker);
                         et.getText().clear();
+                        et.setVisibility(View.INVISIBLE);
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
                         button.setVisibility(View.INVISIBLE);
@@ -132,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         et.getText().clear();
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
+                        et.setVisibility(View.INVISIBLE);
                         button.setVisibility(View.INVISIBLE);
                         back.setVisibility(View.VISIBLE);
                         clear.setVisibility(View.VISIBLE);
@@ -145,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkInput(){
+
 
          int inputValue = Integer.parseInt(et.getText().toString());
          if(inputValue < 1930){
