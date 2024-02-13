@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/year"
-        android:layout_marginTop="-400dp"
+        android:layout_marginTop="-450dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -58,21 +58,24 @@
         />
     <TextView
         android:id="@+id/host"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         />
     <TextView
         android:id="@+id/champion"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text=""
         />
     <TextView
         android:id="@+id/runnerup"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
@@ -80,6 +83,8 @@
 
     <TextView
         android:id="@+id/striker"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
