@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         String cupChampion = documentSnapshot.getString("champion");
                         String cupRunnerUp = documentSnapshot.getString("runnerup");
                         String cupStriker = documentSnapshot.getString("striker");
+                        String strikerGoals = documentSnapshot.getString("goals");
                         year.setText(year.getText() + cupYear);
                         host.setText("Host: " + cupHost);
                         champion.setText("Champion: " + cupChampion);
@@ -149,17 +151,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkInput(){
-
-
-         int inputValue = Integer.parseInt(et.getText().toString());
-         if(inputValue < 1930){
-             Toast.makeText(this, "There were no World Cups before 1930", Toast.LENGTH_SHORT).show();
-         }
-         if(inputValue >= 2023){
-             Toast.makeText(this, "Upcoming World Cups won't be displayed yet", Toast.LENGTH_SHORT).show();
-         }
-
-
+        int inputValue = Integer.parseInt(et.getText().toString());
+        if (inputValue < 1930){
+            Toast.makeText(getApplicationContext(), "There were no world cups before 1930", Toast.LENGTH_SHORT).show();
+        }
+        else if (inputValue > 2023){
+            Toast.makeText(getApplicationContext(), "Upcoming World Cups will not be displayed yer", Toast.LENGTH_SHORT).show();
+        }
     }
     private void checkOlympicYear(){
         int inputValue = Integer.parseInt(et.getText().toString());
