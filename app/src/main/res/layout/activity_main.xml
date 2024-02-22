@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/year"
-        android:layout_marginTop="-450dp"
+        android:layout_marginTop="-470dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -58,7 +58,7 @@
         />
     <TextView
         android:id="@+id/host"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         />
     <TextView
         android:id="@+id/champion"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
         />
     <TextView
         android:id="@+id/runnerup"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,5 +89,13 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:textSize="25sp" />/>
+        android:textSize="25sp" />
+    <TextView
+        android:id="@+id/goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="-33dp"
+        android:ems="10"
+        android:textSize="25sp"/>
 </LinearLayout>

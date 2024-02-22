@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     Button button, back, clear;
     EditText et;
-    TextView year, host, champion, runnerup, striker;
+    TextView year, host, champion, runnerup, striker, goals;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         champion = findViewById(R.id.champion);
         runnerup = findViewById(R.id.runnerup);
         striker = findViewById(R.id.striker);
+        goals = findViewById(R.id.goals);
         db = FirebaseFirestore.getInstance();
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 champion.setText("");
                 runnerup.setText("");
                 striker.setText("");
+                goals.setText("");
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -97,12 +99,14 @@ public class MainActivity extends AppCompatActivity {
                     && !host.getText().toString().isEmpty()
                     && !champion.getText().toString().isEmpty()
                     && !runnerup.getText().toString().isEmpty()
-                    && !striker.getText().toString().isEmpty()){
+                    && !striker.getText().toString().isEmpty()
+                    && !goals.getText().toString().isEmpty()){
                         year.setText("THE WORLD CUP OF ");
                         host.setText("");
                         champion.setText("");
                         runnerup.setText("");
                         striker.setText("");
+                        goals.setText("");
                         String cupYear = documentSnapshot.getString("year");
                         String cupHost = documentSnapshot.getString("host");
                         String cupChampion = documentSnapshot.getString("champion");
@@ -114,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         champion.setText("Champion: " + cupChampion);
                         runnerup.setText("Runner-up: " + cupRunnerUp);
                         striker.setText("Striker: " + cupStriker);
+                        goals.setText(":" + strikerGoals);
                         et.getText().clear();
                         et.setVisibility(View.INVISIBLE);
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -128,12 +133,14 @@ public class MainActivity extends AppCompatActivity {
                         String cupChampion = documentSnapshot.getString("champion");
                         String cupRunnerUp = documentSnapshot.getString("runnerup");
                         String cupStriker = documentSnapshot.getString("striker");
+                        String strikerGoals = documentSnapshot.getString("goals");
 
                         year.setText(year.getText() + cupYear);
                         host.setText("Host: " + cupHost);
                         champion.setText("Champion: " + cupChampion);
                         runnerup.setText("Runner-up: " + cupRunnerUp);
                         striker.setText("Striker: " + cupStriker);
+                        goals.setText(":" + strikerGoals);
                         et.getText().clear();
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
