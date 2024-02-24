@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Copa Do Mundo</string>
+    <string name="hint">Ano</string>
+    <string name="title">A Copa do Mundo</string>
+    <string name="year">"Ano: "</string>
+    <string name="host">"Sede: "</string>
+    <string name="champion">"Campeão: "</string>
+    <string name="runnerup">"Vicee-Campeão: "</string>
+    <string name="striker">"Artilheiro: "</string>
+    <string name="submit">Enviar</string>
+    <string name="clear">Limpar</string>
+    <string name="goback">Voltar</string>
+</resources>

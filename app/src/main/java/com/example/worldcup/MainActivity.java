@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     Button button, back, clear;
     EditText et;
-    TextView year, host, champion, runnerup, striker, goals;
+    TextView title, year, host, champion, runnerup, striker, goals;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         back = findViewById(R.id.returnButton);
         clear = findViewById(R.id.clearButton);
         et = findViewById(R.id.yearEditText);
+        title = findViewById(R.id.title);
         year = findViewById(R.id.year);
         host = findViewById(R.id.host);
         champion = findViewById(R.id.champion);
@@ -68,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                year.setText("THE WORLD CUP OF ");
+                title.setText(R.string.title);
+                year.setText("");
                 host.setText("");
                 champion.setText("");
                 runnerup.setText("");
@@ -101,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
                     && !runnerup.getText().toString().isEmpty()
                     && !striker.getText().toString().isEmpty()
                     && !goals.getText().toString().isEmpty()){
-                        year.setText("THE WORLD CUP OF ");
+                        title.setText(R.string.title);
+                        year.setText("");
                         host.setText("");
                         champion.setText("");
                         runnerup.setText("");
@@ -113,12 +116,12 @@ public class MainActivity extends AppCompatActivity {
                         String cupRunnerUp = documentSnapshot.getString("runnerup");
                         String cupStriker = documentSnapshot.getString("striker");
                         String strikerGoals = documentSnapshot.getString("goals");
-                        year.setText(year.getText() + cupYear);
-                        host.setText("Host: " + cupHost);
-                        champion.setText("Champion: " + cupChampion);
-                        runnerup.setText("Runner-up: " + cupRunnerUp);
-                        striker.setText("Striker: " + cupStriker);
-                        goals.setText(":" + strikerGoals);
+                        year.setText(getResources().getString(R.string.year) + cupYear);
+                        host.setText(getResources().getString(R.string.host) + cupHost);
+                        champion.setText(getResources().getString(R.string.champion) + cupChampion);
+                        runnerup.setText(getResources().getString(R.string.runnerup) + cupRunnerUp);
+                        striker.setText(getResources().getString(R.string.striker) + cupStriker);
+                        goals.setText(" - " + strikerGoals);
                         et.getText().clear();
                         et.setVisibility(View.INVISIBLE);
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -135,12 +138,12 @@ public class MainActivity extends AppCompatActivity {
                         String cupStriker = documentSnapshot.getString("striker");
                         String strikerGoals = documentSnapshot.getString("goals");
 
-                        year.setText(year.getText() + cupYear);
-                        host.setText("Host: " + cupHost);
-                        champion.setText("Champion: " + cupChampion);
-                        runnerup.setText("Runner-up: " + cupRunnerUp);
-                        striker.setText("Striker: " + cupStriker);
-                        goals.setText(":" + strikerGoals);
+                        year.setText(getResources().getString(R.string.year) + cupYear);
+                        host.setText(getResources().getString(R.string.host) + cupHost);
+                        champion.setText(getResources().getString(R.string.champion) + cupChampion);
+                        runnerup.setText(getResources().getString(R.string.runnerup) + cupRunnerUp);
+                        striker.setText(getResources().getString(R.string.striker) + cupStriker);
+                        goals.setText("- " + strikerGoals);
                         et.getText().clear();
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);

@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">WorldCup</string>
+    <string name="app_name">World Cup</string>
+    <string name="hint">Year </string>
+    <string name="title">The World Cup </string>
+    <string name="year">Year: </string>
+    <string name="host">Host: </string>
+    <string name="champion">Champion: </string>
+    <string name="runnerup">Runner-up: </string>
+    <string name="striker">Striker: </string>
+    <string name="submit">Submit</string>
+    <string name="clear">Clear</string>
+    <string name="goback">Return</string>
 </resources>
