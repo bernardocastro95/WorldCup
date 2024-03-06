@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         goals = findViewById(R.id.goals);
         db = FirebaseFirestore.getInstance();
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
