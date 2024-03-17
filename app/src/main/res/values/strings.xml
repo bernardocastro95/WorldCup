@@ -10,4 +10,9 @@
     <string name="submit">Submit</string>
     <string name="clear">Clear</string>
     <string name="goback">Return</string>
+    <string name="noPreviousCup">There were no World Cup before 1930</string>
+    <string name="noUpcomingCup">Upcoming world cups will not be displayed yet</string>
+    <string name="ww2">There were no World Cup due to WW2</string>
+    <string name="noCup">This year had no World Cup</string>
+    <string name="olympic">This year had Olympic Games</string>
 </resources>

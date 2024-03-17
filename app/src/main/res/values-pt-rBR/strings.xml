@@ -11,4 +11,9 @@
     <string name="submit">Enviar</string>
     <string name="clear">Limpar</string>
     <string name="goback">Voltar</string>
+    <string name="noPreviousCup">Não houve copas do mundo antes de 1930</string>
+    <string name="noUpcomingCup">Copas do mundo futuras não serão mostradas ainda</string>
+    <string name="ww2">Não houve copa do mundo nesse ano devido a Segunda Guerra Mundial</string>
+    <string name="noCup">Esse ano não teve copa do Mundo</string>
+    <string name="olympic">Esse ano teve Jogos Olímpicos</string>
 </resources>

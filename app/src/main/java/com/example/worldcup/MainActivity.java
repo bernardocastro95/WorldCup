@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     Button button, back, clear;
     EditText et;
-    TextView title, year, host, champion, runnerup, striker, goals;
+    TextView title, year, host, champion, runnerup, striker, goals, noCup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         back = findViewById(R.id.returnButton);
         clear = findViewById(R.id.clearButton);
         et = findViewById(R.id.yearEditText);
+        noCup = findViewById(R.id.noWorldCup);
         title = findViewById(R.id.title);
         year = findViewById(R.id.year);
         host = findViewById(R.id.host);
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 runnerup.setText("");
                 striker.setText("");
                 goals.setText("");
+                noCup.setText("");
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
                 et.setVisibility(View.VISIBLE);
                 back.setVisibility(View.INVISIBLE);
                 clear.setVisibility(View.INVISIBLE);
+                year.setVisibility(View.VISIBLE);
+                host.setVisibility(View.VISIBLE);
+                champion.setVisibility(View.VISIBLE);
+                runnerup.setVisibility(View.VISIBLE);
+                striker.setVisibility(View.VISIBLE);
+                goals.setVisibility(View.VISIBLE);
+                noCup.setText("");
             }
         });
     }
@@ -164,10 +173,30 @@ public class MainActivity extends AppCompatActivity {
     private void checkInput(){
         int inputValue = Integer.parseInt(et.getText().toString());
         if (inputValue < 1930){
-            Toast.makeText(getApplicationContext(), "There were no world cups before 1930", Toast.LENGTH_SHORT).show();
+            et.setVisibility(View.INVISIBLE);
+            button.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.VISIBLE);
+            clear.setVisibility(View.VISIBLE);
+            year.setVisibility(View.INVISIBLE);
+            host.setVisibility(View.INVISIBLE);
+            champion.setVisibility(View.INVISIBLE);
+            runnerup.setVisibility(View.INVISIBLE);
+            striker.setVisibility(View.INVISIBLE);
+            goals.setVisibility(View.INVISIBLE);
+            noCup.setText(getResources().getString(R.string.noPreviousCup));
         }
         else if (inputValue > 2023){
-            Toast.makeText(getApplicationContext(), "Upcoming World Cups will not be displayed yer", Toast.LENGTH_SHORT).show();
+            et.setVisibility(View.INVISIBLE);
+            button.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.VISIBLE);
+            clear.setVisibility(View.VISIBLE);
+            year.setVisibility(View.INVISIBLE);
+            host.setVisibility(View.INVISIBLE);
+            champion.setVisibility(View.INVISIBLE);
+            runnerup.setVisibility(View.INVISIBLE);
+            striker.setVisibility(View.INVISIBLE);
+            goals.setVisibility(View.INVISIBLE);
+            noCup.setText(getResources().getString(R.string.noUpcomingCup));
         }
     }
     private void checkOlympicYear(){
@@ -182,13 +211,33 @@ public class MainActivity extends AppCompatActivity {
                 || inputValue == 2000 || inputValue == 2004
                 || inputValue == 2008 || inputValue == 2012
                 || inputValue == 2016 || inputValue == 2020){
-            Toast.makeText(this, "This year had the Olympic Games", Toast.LENGTH_SHORT).show();
+            et.setVisibility(View.INVISIBLE);
+            button.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.VISIBLE);
+            clear.setVisibility(View.VISIBLE);
+            year.setVisibility(View.INVISIBLE);
+            host.setVisibility(View.INVISIBLE);
+            champion.setVisibility(View.INVISIBLE);
+            runnerup.setVisibility(View.INVISIBLE);
+            striker.setVisibility(View.INVISIBLE);
+            goals.setVisibility(View.INVISIBLE);
+            noCup.setText(getResources().getString(R.string.olympic));
         }
     }
     private void checkWW2Year(){
         int inputValue = Integer.parseInt(et.getText().toString());
         if(inputValue == 1942 || inputValue == 1946){
-            Toast.makeText(this, "Due to WW2, there was no World Cup", Toast.LENGTH_SHORT).show();
+            et.setVisibility(View.INVISIBLE);
+            button.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.VISIBLE);
+            clear.setVisibility(View.VISIBLE);
+            year.setVisibility(View.INVISIBLE);
+            host.setVisibility(View.INVISIBLE);
+            champion.setVisibility(View.INVISIBLE);
+            runnerup.setVisibility(View.INVISIBLE);
+            striker.setVisibility(View.INVISIBLE);
+            goals.setVisibility(View.INVISIBLE);
+            noCup.setText(getResources().getString(R.string.ww2));
         }
     }
     private void inBetween(){
@@ -216,7 +265,17 @@ public class MainActivity extends AppCompatActivity {
                 || inputValue == 2011 || inputValue == 2013
                 || inputValue == 2015 || inputValue == 2017
                 || inputValue == 2019 || inputValue == 2021){
-            Toast.makeText(this, "There was no World Cup this year", Toast.LENGTH_SHORT).show();
+            et.setVisibility(View.INVISIBLE);
+            button.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.VISIBLE);
+            clear.setVisibility(View.VISIBLE);
+            year.setVisibility(View.INVISIBLE);
+            host.setVisibility(View.INVISIBLE);
+            champion.setVisibility(View.INVISIBLE);
+            runnerup.setVisibility(View.INVISIBLE);
+            striker.setVisibility(View.INVISIBLE);
+            goals.setVisibility(View.INVISIBLE);
+            noCup.setText(getResources().getString(R.string.noCup));
 
 
         }
