@@ -94,6 +94,12 @@ public class MainActivity extends AppCompatActivity {
                 runnerup.setVisibility(View.VISIBLE);
                 striker.setVisibility(View.VISIBLE);
                 goals.setVisibility(View.VISIBLE);
+                year.setText("");
+                host.setText("");
+                champion.setText("");
+                runnerup.setText("");
+                striker.setText("");
+                goals.setText("");
                 noCup.setText("");
             }
         });
